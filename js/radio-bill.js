@@ -10,13 +10,13 @@
 // * add the appropriate value to the running total
 // * add nothing for invalid values that is not 'call' or 'sms'.
 // * display the latest total on the screen
-var billItemTypeRadio = document.querySelector(".billItemTypeRadio");
-var radioBillAddBtn = document.querySelector(".radioBillAddBtn");
-var callTotalTwo = document.querySelector(".callTotalTwo");
-var smsTotalTwo = document.querySelector(".smsTotalTwo");
-var totalTwo = document.querySelector(".totalTwo");
+var billItemTypeRadioElement = document.querySelector(".billItemTypeRadio");
+var radioBillAddBtnElement = document.querySelector(".radioBillAddBtn");
+var callTotalTwoElement = document.querySelector(".callTotalTwo");
+var smsTotalTwoElement = document.querySelector(".smsTotalTwo");
+var totalTwoElement = document.querySelector(".totalTwo");
 
-var callsTotal = 0;
+var callsTotalTwo = 0;
 var smsTotal = 0;
 
 function radioBillTotal(){
@@ -24,7 +24,7 @@ var checkedRadioBtn = document.querySelector("input[name='billItemType']:checked
 if (checkedRadioBtn) {
     var billItemType = checkedRadioBtn.value
     if (billItemType === "call") {
-        callsTotal += 2.75
+        callsTotalTwo += 2.75
     }
     else if (billItemType === "sms") {
         smsTotal += 0.75;
@@ -32,20 +32,20 @@ if (checkedRadioBtn) {
 
 }
 
-callTotalTwo.innerHTML = callsTotal.toFixed(2);
-smsTotalTwo.innerHTML = smsTotal.toFixed(2);
-var totalCost = callsTotal + smsTotal;
-totalTwo.innerHTML = totalCost.toFixed(2);
+callTotalTwoElement.innerHTML = callsTotalTwo.toFixed(2);
+smsTotalTwoElement.innerHTML = smsTotal.toFixed(2);
+var totalCost = callsTotalTwo + smsTotal;
+totalTwoElement.innerHTML = totalCost.toFixed(2);
 
 
 
 if (totalCost >= 50) {
-    totalTwo.classList.add("danger");
+    totalTwoElement.classList.add("danger");
 }
 if (totalCost >= 30) {
-    totalTwo.classList.add("warning");
+    totalTwoElement.classList.add("warning");
 }
 }
 
 
-radioBillAddBtn.addEventListener('click', radioBillTotal);
+radioBillAddBtnElement.addEventListener('click', radioBillTotal);
