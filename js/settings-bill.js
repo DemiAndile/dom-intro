@@ -20,3 +20,74 @@
 // * add nothing for invalid values that is not 'call' or 'sms'.
 // * display the latest total on the screen.
 // * check the value thresholds and display the total value in the right color.
+
+var billItemTypeWithSettings = document.querySelector(".billItemTypeWithSettings");
+var callTotalSettings = document.querySelector(".callTotalSettings");
+var smsTotalSettings = document.querySelector(".smsTotalSettings");
+var totalSettings = document.querySelector(".totalSettings");
+
+var callCostSetting = document.querySelector(".callCostSetting");
+var smsCostSetting = document.querySelector(".smsCostSetting");
+var warningLevelSetting = document.querySelector(".warningLevelSetting");
+var criticalLevelSetting = document.querySelector(".criticalLevelSetting");
+
+var updateSettingsBtn = document.querySelector(".updateSettings");
+var settingsBillAddBtnElement = document.querySelector(".settingsBillAddBtn");
+var myRadios = document.querySelectorAll('.billItemTypeWithSettings');
+
+
+var callsTotalS = 0;
+var smsTotal = 0;
+
+var callCostSettings = 0;
+var smsCostSettings = 0;
+
+var warningLevel = warningLevelSetting.value;
+var criticalLevel = criticalLevelSetting.value;
+
+function updateBillSettings() {
+    callCostSettings = Number(callCostSetting.value);
+    SMScostSettings = Number(smsCostSetting.value);
+    warningLevel = Number(warningLevelSetting.value);
+    warningLevelSetting.innerHTML = warningLevel.toFixed(2);
+    criticalLevel = Number(criticalLevelSetting.value);
+    criticalLevelSetting.innerHTML = criticalLevel.toFixed(2);
+}
+
+function settingBillTotalBtn() {
+    for (var i = 0; i < myRadios.length; i++) {
+        var elem = myRadios[i];
+        if (elem.checked == true) {
+            if (elem.value === "call") {
+                callsTotalS += Number(callCostSettings)
+            } else if (elem.value === "sms") {
+                smsTotal += Number(SMScostSettings)
+            }
+
+            callTotalSettings.innerHTML = callsTotalS.toFixed(2);
+            smsTotalSettings.innerHTML = smsTotal.toFixed(2);
+            var totalCost = callsTotalS + smsTotal;
+            totalSettings.innerHTML = totalCost.toFixed(2);
+        }
+    }
+    if (totalCost >= criticalLevel) {
+        settingsBillAddBtnElement.disabled = true;
+    }
+    if (totalCost >= criticalLevel) {
+        totalSettings.classList.remove("warning");
+        totalSettings.classList.add("danger");
+    }
+
+    else if (totalCost >= warningLevel) {
+        totalSettings.classList.add("warning");
+        totalSettings.classList.remove("danger");
+    }
+    else {
+        totalSettings.classList.remove("danger");
+        totalSettings.classList.remove("warning");
+
+    }
+}
+
+updateSettingsBtn.addEventListener('click', updateBillSettings);
+settingsBillAddBtnElement.addEventListener('click', settingBillTotalBtn);

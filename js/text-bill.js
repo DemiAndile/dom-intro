@@ -28,7 +28,6 @@ function textBillTotal(){
         smsTotal += 0.75;
     }
     
-    //update the totals that is displayed on the screen.
     callTotalOneElement.innerHTML = callsTotal.toFixed(2);
     smsTotalOneElement.innerHTML = smsTotal.toFixed(2);
     var totalCost = callsTotal + smsTotal;
