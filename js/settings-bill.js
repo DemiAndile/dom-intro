@@ -47,7 +47,7 @@ function updateBillSettings() {
     SMScostSettings = Number(smsCostSetting.value);
     warningLevel = Number(warningLevelSetting.value);
     criticalLevel = Number(criticalLevelSetting.value);
-
+    
     warningLevelSetting.innerHTML = warningLevel.toFixed(2);
     criticalLevelSetting.innerHTML = criticalLevel.toFixed(2);
 }

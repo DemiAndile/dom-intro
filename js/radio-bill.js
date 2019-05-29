@@ -17,7 +17,7 @@ var smsTotalTwoElement = document.querySelector(".smsTotalTwo");
 var totalTwoElement = document.querySelector(".totalTwo");
 
 var callsTotalTwo = 0;
-var smsTotal = 0;
+var smsTotalS = 0;
 
 function radioBillTotal(){
 var checkedRadioBtn = document.querySelector("input[name='billItemType']:checked");
@@ -27,14 +27,14 @@ if (checkedRadioBtn) {
         callsTotalTwo += 2.75
     }
     else if (billItemType === "sms") {
-        smsTotal += 0.75;
+        smsTotalS += 0.75;
     }
 
 }
 
 callTotalTwoElement.innerHTML = callsTotalTwo.toFixed(2);
-smsTotalTwoElement.innerHTML = smsTotal.toFixed(2);
-var totalCost = callsTotalTwo + smsTotal;
+smsTotalTwoElement.innerHTML = smsTotalS.toFixed(2);
+var totalCost = callsTotalTwo + smsTotalS;
 totalTwoElement.innerHTML = totalCost.toFixed(2);
 
 
