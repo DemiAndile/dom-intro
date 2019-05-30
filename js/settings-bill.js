@@ -50,6 +50,34 @@ function updateBillSettings() {
     
     warningLevelSetting.innerHTML = warningLevel.toFixed(2);
     criticalLevelSetting.innerHTML = criticalLevel.toFixed(2);
+
+    callTotalSettings.innerHTML = callsTotalS.toFixed(2);
+    smsTotalSettings.innerHTML = smsTotals.toFixed(2);
+    var totalCost = callsTotalS + smsTotals;
+    totalSettings.innerHTML = totalCost.toFixed(2);
+
+
+
+    if(totalCost >= criticalLevel) {
+        totalSettings.classList.add("danger");
+             settingsBillAddBtnElement.disabled = true;
+        }
+
+        if(totalCost < criticalLevel) {
+                 totalSettings.classList.remove("danger");
+                 totalSettings.classList.add("warning");
+                 settingsBillAddBtnElement.disabled = false;
+             }
+
+             if(totalCost >= warningLevel) {
+                totalSettings.classList.add("warning");
+            }
+
+             if(totalCost < warningLevel) {
+                totalSettings.classList.remove("warning");
+                totalSettings.classList.remove("danger");
+            }
+
 }
 
 function settingBillTotalBtn() {
@@ -68,23 +96,27 @@ function settingBillTotalBtn() {
             totalSettings.innerHTML = totalCost.toFixed(2);
         }
     }
-    if (totalCost >= criticalLevel) {
-        settingsBillAddBtnElement.disabled = true;
-    }
-    if (totalCost >= criticalLevel) {
-        totalSettings.classList.remove("warning");
+
+    if(totalCost >= criticalLevel) {
         totalSettings.classList.add("danger");
-    }
+             settingsBillAddBtnElement.disabled = true;
+        }
 
-    else if (totalCost >= warningLevel) {
-        totalSettings.classList.add("warning");
-        totalSettings.classList.remove("danger");
-    }
-    else {
-        totalSettings.classList.remove("danger");
-        totalSettings.classList.remove("warning");
+        if(totalCost < criticalLevel) {
+                 totalSettings.classList.remove("danger");
+                 totalSettings.classList.add("warning");
+                 settingsBillAddBtnElement.disabled = false;
+             }
 
-    }
+             if(totalCost >= warningLevel) {
+                totalSettings.classList.add("warning");
+            }
+
+             if(totalCost < warningLevel) {
+                totalSettings.classList.remove("warning");
+                totalSettings.classList.remove("danger");
+            }
+   
 }
 
 updateSettingsBtn.addEventListener('click', updateBillSettings);
