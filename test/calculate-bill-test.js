@@ -1,4 +1,3 @@
-
 describe('calculateBill' , function(){
     let calculateBill = FactoryCalculateBill();  //  creating an instance so that you have access to closures that are defined inside the factory function 
 

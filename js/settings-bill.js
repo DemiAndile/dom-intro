@@ -17,7 +17,7 @@ function FactoryBillSettings(){
     }
     function setCallCostSettings(price){
         callCostSetting += price;
-    }
+    }9*
     function setSmsCostSettings(price){
         smsCostSetting += price;
     }
@@ -26,7 +26,7 @@ function FactoryBillSettings(){
         return smsTotals.toFixed(2);
     }
     function getCallTotal() {
-        return callsTotalS.toFixed(2);
+        return callsTotalS;
     }
     function setCallCostSettings() {
         return callCostSettings.toFixed(2);
